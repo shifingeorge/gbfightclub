@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0a0908;
+  --coal: #171310;
+  --bone: #ede6da;
+  --bone-dim: #93897b;
+  --blood: #b80c24;
+  --blood-hot: #e11d3c;
+  --rule: rgba(237, 230, 218, 0.14);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-coal: var(--coal);
+  --color-bone: var(--bone);
+  --color-bone-dim: var(--bone-dim);
+  --color-blood: var(--blood);
+  --color-blood-hot: var(--blood-hot);
+  --color-rule: var(--rule);
+  --font-display: var(--font-big-shoulders);
+  --font-sans: var(--font-barlow);
+  --font-mono: var(--font-plex-mono);
+}
+
+body {
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-barlow), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Film grain over everything — the one atmospheric layer. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Display headline utility — fight-poster type. */
+.display {
+  font-family: var(--font-big-shoulders), sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+}
+
+/* Mono eyebrow labels — fight-card data voice. */
+.eyebrow {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+}
+
+::selection {
+  background: var(--blood);
+  color: var(--bone);
+}
+
+:focus-visible {
+  outline: 2px solid var(--blood-hot);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
