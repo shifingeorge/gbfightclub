@@ -54,6 +54,7 @@ export default function Footer() {
                 ["/schedule", "Schedule & Fees"],
                 ["/trainers", "Trainers"],
                 ["/gallery", "Gallery"],
+                ["/events", "Events"],
                 ["/contact", "Contact"],
               ].map(([href, label]) => (
                 <li key={href}>
